@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "4b448a7c-0215-404d-b9eb-7ce1d056da46",
+    "colId": "ec4892c6-50d1-4956-81d0-7c7bfcddf30d",
+    "containerId": "",
+    "name": "get usuarios",
+    "url": "http://192.168.1.75:3000/api/user",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-08-27T01:00:13.192Z",
+    "modified": "2022-08-27T01:10:17.127Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
