@@ -10,12 +10,16 @@ module.exports = function (injectedStore) {
 
     async function login(username, password) {
         const data = await store.query(TABLA, { username: username });
-        if (data.password === password) {
-            // Genero el token
-            return auth.sign(data);
-        } else {
-            throw new Error('Informacion Ivalidad');
-        }
+
+        return bcrypt.compare(password, data.password)
+            .then(sonIguales => {
+                if (sonIguales === true) {
+                    return auth.sign(data);
+                }
+                else {
+                    throw new Error('Informacion Ivalida');
+                }
+            });
     }
 
     async function upsert(data) {
@@ -28,7 +32,7 @@ module.exports = function (injectedStore) {
         }
 
         if (data.password) {
-            authData.password = data.password;
+            authData.password = await bcrypt.hash(data.password, 10);
         }
         return store.upsert(TABLA, authData);
     }

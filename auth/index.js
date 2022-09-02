@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 function sign(data) {
     return jwt.sign(data, 'secreto');
