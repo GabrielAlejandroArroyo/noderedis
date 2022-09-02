@@ -1,16 +1,16 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Una red social en NodeJS",
+    "description": "Una red social en NODEJS",
     "version": "1.0.0",
-    "title": "RedSocialNode"
+    "title": "RedSocial Node"
   },
-  "host": "192.168.1.75:3000",
+  "host": "localhost:3000",
   "basePath": "/api",
   "tags": [
     {
       "name": "user",
-      "description": "Operaciones sobre el usuario"
+      "description": "Operations about user"
     }
   ],
   "schemes": [
@@ -22,11 +22,12 @@
         "tags": [
           "user"
         ],
-        "summary": "Lista los usuario",
+        "summary": "List user",
+        "description": "This can only be done by the logged in user.",
         "operationId": "listUser",
         "responses": {
           "default": {
-            "description": "Lista de usuarios"
+            "description": "successful operation"
           }
         }
       },
@@ -34,8 +35,8 @@
         "tags": [
           "user"
         ],
-        "summary": "Crea un usuario",
-        "description": "Crea un usuario en nuestra app",
+        "summary": "Create user",
+        "description": "This can only be done by the logged in user.",
         "operationId": "createUser",
         "produces": [
           "application/json"
@@ -44,7 +45,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Usuario creado",
+            "description": "Created user object",
             "required": true,
             "schema": {
               "$ref": "#/definitions/User"

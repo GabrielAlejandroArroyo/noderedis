@@ -1,7 +1,5 @@
 const nanoid = require('nanoid');
 
-const { use } = require('./network');
-
 const TABLA = 'user';
 
 module.exports = function (injectedStore) {
@@ -35,6 +33,6 @@ module.exports = function (injectedStore) {
     return {
         list,
         get,
-        upsert,
+        upsert
     };
 }
