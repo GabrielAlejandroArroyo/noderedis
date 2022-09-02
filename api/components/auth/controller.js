@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+const auth = require('../../../auth');
 const TABLA = 'auth';
 
 module.exports = function (injectedStore) {
@@ -6,21 +8,23 @@ module.exports = function (injectedStore) {
         store = require('../../../store/dummy');
     }
 
-    // function list() {
-    //     return store.list(TABLA);
-    // }
+    async function login(username, password) {
+        const data = await store.query(TABLA, { username: username });
+        if (data.password === password) {
+            // Genero el token
+            return auth.sign(data);
+        } else {
+            throw new Error('Informacion Ivalidad');
+        }
+    }
 
-    // function get(id) {
-    //     return store.get(TABLA, id);
-    // }
-
-    function upsert(data) {
+    async function upsert(data) {
         const authData = {
             id: data.id,
         }
 
         if (data.username) {
-            authData.userName = data.username;
+            authData.username = data.username;
         }
 
         if (data.password) {
@@ -30,8 +34,7 @@ module.exports = function (injectedStore) {
     }
 
     return {
-        // list,
-        // get,
+        login,
         upsert,
     };
 }
