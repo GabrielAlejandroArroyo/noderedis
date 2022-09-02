@@ -12,5 +12,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "1761e584-cbe1-467a-b5e4-0cbb29b77b70",
+    "colId": "ec4892c6-50d1-4956-81d0-7c7bfcddf30d",
+    "containerId": "",
+    "name": "post create usuario",
+    "url": "http://192.168.1.75:3000/api/user",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-09-02T16:35:59.062Z",
+    "modified": "2022-09-02T16:37:51.381Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\":\"Paco\",\n  \"username\":\"paco\",\n  \"password\":\"1234\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

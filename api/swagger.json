@@ -1,16 +1,16 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Una red social en NODEJS",
+    "description": "Una red social en NodeJS",
     "version": "1.0.0",
-    "title": "RedSocial Node"
+    "title": "RedSocialNode"
   },
   "host": "localhost:3000",
   "basePath": "/api",
   "tags": [
     {
       "name": "user",
-      "description": "Operations about user"
+      "description": "Operaciones sobre el usuario"
     }
   ],
   "schemes": [
@@ -22,12 +22,11 @@
         "tags": [
           "user"
         ],
-        "summary": "List user",
-        "description": "This can only be done by the logged in user.",
+        "summary": "Lista los usuarios",
         "operationId": "listUser",
         "responses": {
           "default": {
-            "description": "successful operation"
+            "description": "Lista de usuarios"
           }
         }
       },
@@ -35,8 +34,8 @@
         "tags": [
           "user"
         ],
-        "summary": "Create user",
-        "description": "This can only be done by the logged in user.",
+        "summary": "Crea un usuario",
+        "description": "Crea un usuario en nuestra app",
         "operationId": "createUser",
         "produces": [
           "application/json"
@@ -45,7 +44,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Created user object",
+            "description": "Usuario creado",
             "required": true,
             "schema": {
               "$ref": "#/definitions/User"
@@ -54,22 +53,83 @@
         ],
         "responses": {
           "default": {
-            "description": "successful operation"
+            "description": "Operación exitosa"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Actualiza un usuario",
+        "description": "Actualiza un usuario en nuestra app",
+        "operationId": "upsertUser",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Usuario actualizado",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Usuario actualizado con éxito"
+          }
+        }
+      }
+    },
+    "/user/{userId}": {
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Elimina a un usuario",
+        "description": "Elimina a un usuario de nuestra app",
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "type": "string",
+            "description": "Usuario eliminado",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Usuario eliminado con éxito"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Busca a un usuario",
+        "description": "Busca a un usuario de nuestra app",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "type": "string",
+            "description": "Usuario buscado",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Usuario encontrado con éxito"
           }
         }
       }
     }
   },
   "securityDefinitions": {
-    "petstore_auth": {
-      "type": "oauth2",
-      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
-      "flow": "implicit",
-      "scopes": {
-        "write:pets": "modify pets in your account",
-        "read:pets": "read your pets"
-      }
-    },
     "api_key": {
       "type": "apiKey",
       "name": "api_key",
@@ -109,6 +169,6 @@
   },
   "externalDocs": {
     "description": "Find out more about Swagger",
-    "url": "http://swagger.io"
+    "url": "https://swagger.io"
   }
 }
